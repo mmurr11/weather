@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+const APIContext = React.createContext();
 
 function App() {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
+  const [apiKey] = useState(API_KEY);
+  const [noData, setNoData] = useState("No data");
+  const [searchterm, setSearchterm] = useState("");
+  const [weatherData, setWeatherData] = useState([]);
+  const [city, setCity] = useState("Unknown location");
+  const [weatherIcon, setWeatherIcon] = useState(
+    `${process.env.REACT_APP_ICON_URL}10n@2x.png`
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <APIContext.Provider value={apiKey}>
+      <div>
+        <div className="App">api is {apiKey}</div>;
+      </div>
+    </APIContext.Provider>
   );
 }
 
