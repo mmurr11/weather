@@ -16,7 +16,7 @@ function App() {
 
   return (
     <APIContext.Provider value={apiKey}>
-      <div>
+      <div className="bg-gray-800 ">
         <div className="App">api is {apiKey}</div>;
       </div>
     </APIContext.Provider>
